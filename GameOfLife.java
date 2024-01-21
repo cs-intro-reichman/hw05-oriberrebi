@@ -140,7 +140,7 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	public static int count(int[][] board, int i, int j) {
 		int sum = 0;
-		if (i > 0){
+		if (i > 0 && j < board[0].length){
 			sum += board[i -1][j];
 		}
 		if (i > 0 && j > 0) {
@@ -149,16 +149,16 @@ public class GameOfLife {
 		if (i > 0 && j < board[0].length - 1) {
 			sum += board[i - 1][j + 1];
 		}
-		if (j < board[0].length - 1) {
+		if (j < board[0].length - 1 && i < board.length) {
 			sum += board[i][j + 1];
 		}
-		if (j > 0){
+		if (j > 0 && i < board.length){
 			sum += board[i][j - 1];
 		}
 		if (i < board.length - 1 && j > 0) {
 			sum += board[i + 1][j - 1];
 		}
-		if (i < board.length - 1) {
+		if (i < board.length - 1 && j < board[0].length) {
 			sum += board[i +1][j];
 		}
 		if (i < board.length - 1 && j < board[0].length - 1) {
