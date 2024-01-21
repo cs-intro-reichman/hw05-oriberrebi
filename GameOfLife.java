@@ -93,21 +93,14 @@
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
 
-		int[][] NewBoard = new int[board.length][board[0].length];
+		int[][] newBoard = new int[board.length][board[0].length];
 
-		for(int i = 0; i < board.length; i ++){
-			for(int j = 0; j < board[i].length; j ++){
-
-				if(i == 0 || i == board.length - 1 || j == 0 || j == board[i].length -1){
-					NewBoard[i][j] = board[i][j];
-				} else if (board[i][j] == cellValue(board, i, j)){
-					NewBoard[i][j] = board[i][j];
-				} else if (board[i][j] != cellValue(board, i, j)){
-					NewBoard[i][j] = cellValue(board, i, j);
+		for(int i = 1; i < board.length - 1; i ++){
+			for(int j = 1; j < board[i].length - 1; j ++){
+				newBoard[i][j] = cellValue(board, i, j);
 			}
 		}
-			}
-			return NewBoard;
+		return newBoard;
 		}
 
 	// Returns the value that cell (i,j) should have in the next generation.
@@ -121,15 +114,15 @@
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	public static int cellValue(int[][] board, int i, int j) {
 			int neigAlive = count(board, i, j);
-			if(board[i][j] == 1){ //alive
+			if(board[i][j] == 1){
 				if(neigAlive < 2 || neigAlive > 3){
 				return 0;
 			}
 		}
-			else {
+		else {
 			if (neigAlive == 3){
 				return 1;
-					}	
+			}
 	}
 	return board[i][j];
 }
