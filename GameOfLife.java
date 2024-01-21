@@ -146,22 +146,22 @@ public class GameOfLife {
 		if (i > 0 && j > 0) {
 			sum += board[i - 1][j - 1]; 
 		}
-		if (i > 0 && j < board[0].length) {
+		if (i > 0 && j < board[0].length - 1) {
 			sum += board[i - 1][j + 1];
 		}
-		if (j < board[0].length) {
+		if (j < board[0].length - 1) {
 			sum += board[i][j + 1];
 		}
 		if (j > 0){
 			sum += board[i][j - 1];
 		}
-		if (i < board.length && j > 0) {
+		if (i < board.length - 1 && j > 0) {
 			sum += board[i + 1][j - 1];
 		}
-		if (i < board.length) {
+		if (i < board.length - 1) {
 			sum += board[i +1][j];
 		}
-		if (i < board.length && j < board[0].length) {
+		if (i < board.length - 1 && j < board[0].length - 1) {
 			sum += board[i +1][j + 1];
 		}
 		return sum;
